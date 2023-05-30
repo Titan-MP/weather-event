@@ -47,16 +47,6 @@ main {
     margin: 10px;
 }
 
-/* #current {
-    border: 2px solid rgb(34, 115, 161);
-    padding: 10px;
-}
-
-#current h3,
-h5 {
-    margin: 10px;
-} */
-
 #forecast {
     display: flex;
 }
