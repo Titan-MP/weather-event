@@ -1,5 +1,8 @@
 let store;
 let history = document.querySelector('#history');
+const apiKey = "acacc251ac1d55c10b6b1ca615625847";
+const ticketmasterapiKey = "";
+
 
 const getHistory = () => {
     store = localStorage.history ? JSON.parse(localStorage.history) : [];
