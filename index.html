@@ -11,40 +11,38 @@
 <body>
     <nav>Weather Dashboard</nav>
     <div id="container">
-      <div id="gradient"></div>
-      <aside>
-        <h3>Search for a City:</h3>
-        <h3>Search for a Movie Theater by Zipcode:</h3>
-        <input type="text" placeholder="Tampa" />
-        <button onclick="searchCity()">Search</button>
-        <hr />
-        <div id="history"></div>
-      </aside>
-      <main>
-        <div id="current">
-          <h1>Current Weather</h1>
-          <h2 id="current-time"></h2> <!-- New line for displaying current time -->
-        </div>
-        <div>
-          <h5>5-Day Forecast</h5>
-          <div id="forecast"></div>
-        </div>
-        <section>
-          <h2>Current Movies</h2>
-          <div id="current-movies">
-            <!-- Placeholder for current movies -->
-          </div>
-        </section>
-        <section>
-          <h2>Recently Viewed Movies</h2>
-          <div id="recently-viewed-movies">
-            <!-- Placeholder for recently viewed movies -->
-          </div>
-        </section>
-      </main>
+        <div id="gradient"></div>
+        <aside>
+            <h3>Search for a Movie Theater by Zipcode:</h3>
+            <input type="text" placeholder="Tampa" />
+            <button onclick="searchCity()">Search</button>
+            <hr />
+            <div id="history"></div>
+        </aside>
+        <main>
+            <div id="current">
+                <h1>Current Weather</h1>
+                <h2 id="current-time"></h2>
+            </div>
+            <div>
+                <h5>5-Day Forecast</h5>
+                <div id="forecast"></div>
+            </div>
+            <section>
+                <h2>Current Movies</h2>
+                <div id="current-movies">
+                    <!-- Placeholder for current movies -->
+                </div>
+            </section>
+            <section>
+                <h2>Recently Viewed Movies</h2>
+                <div id="recently-viewed-movies">
+                    <!-- Placeholder for recently viewed movies -->
+                </div>
+            </section>
+        </main>
     </div>
     <script src="./scripts.js"></script>
 </body>
 </html>
-
 
