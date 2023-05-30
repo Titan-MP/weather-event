@@ -75,3 +75,8 @@ main {
     padding: 5px;
     border-radius: 8px;
 }
+
+#events {
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -1,9 +1,25 @@
 let store;
 let history = document.querySelector('#history');
-const apiKey = "acacc251ac1d55c10b6b1ca615625847";
-const ticketmasterapiKey = "";
+const weatherApiKey = "acacc251ac1d55c10b6b1ca615625847";
+const ticketmasterApiKey = "X4xZbqdMjNE0sYFaaNPjrEKwBGjGkd96";
+
+// const axios = require('axios');
 
 
+// Example usage
+const apiKey = 'X4xZbqdMjNE0sYFaaNPjrEKwBGjGkd96';
+let keyword = 'music';
+let city = 'New York';
+
+
+
+// const getEvents = () => {
+//    let eventUrl = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${ticketmasterApiKey}`
+//    console.log("eventUrl:", eventUrl)
+// };
+
+// getEvents();
+ 
 const getHistory = () => {
     store = localStorage.history ? JSON.parse(localStorage.history) : [];
 
@@ -24,8 +40,58 @@ const searchCity = async () => {
 
     if(!city) return;
 
-    let url1 = `https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&units=imperial&q=${city}`;
-    let url2 = `https://api.openweathermap.org/data/2.5/forecast?appid=${apiKey}&units=imperial&q=${city}`;
+
+    function searchEvents(apiKey, keyword, city) {
+        const baseURL = 'https://app.ticketmaster.com/discovery/v2/events.json';
+        const params = {
+          apikey: ticketmasterApiKey,
+          keyword: keyword,
+          city: city
+        };
+      
+        return axios
+          .get(baseURL, { params })
+          .then(response => {
+            return response.data._embedded.events;
+          })
+          .catch(error => {
+            console.log("error:", error);
+            return null;
+          });
+      }
+
+    searchEvents(apiKey, keyword, city)
+  .then(events => {
+    console.log(events);
+    let eventDiv = document.getElementById("events")
+    if (events) {
+        
+events.forEach(item => {
+    console.log("item:", item)
+    let endDate = item.dates.end ? `<h5>End Date: ${item.dates.end.localDate}</h5>` : "";
+    let startTime = new Date(item.dates.start.localTime)
+    let day = startTime ? startTime.getUTCHours() : null;
+    console.log(startTime.valueOf().toLocaleString("en-US"))
+    eventDiv.innerHTML += `
+    <div class="card">
+        <h3>${item.name}</h3>
+        <h5>Start Date: ${item.dates.start.localDate}</h5>        
+        ${endDate}
+        <h5>Start Time: ${item.dates.start.localTime}</h5>        
+      
+    </div>
+`
+});
+    }
+  
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+
+    let url1 = `https://api.openweathermap.org/data/2.5/weather?appid=${weatherApiKey}&units=imperial&q=${city}`;
+    let url2 = `https://api.openweathermap.org/data/2.5/forecast?appid=${weatherApiKey}&units=imperial&q=${city}`;
 
     if(!store.includes(city)) {
         store.push(city);
@@ -58,5 +124,7 @@ const searchCity = async () => {
             </div>
         `;
     }
-    console.log(list);
+    // console.log(list);
+
+
 };
