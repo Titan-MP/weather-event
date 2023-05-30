@@ -66,22 +66,40 @@ const searchCity = async () => {
     let eventDiv = document.getElementById("events")
     if (events) {
         
-events.forEach(item => {
-    console.log("item:", item)
-    let endDate = item.dates.end ? `<h5>End Date: ${item.dates.end.localDate}</h5>` : "";
-    let startTime = new Date(item.dates.start.localTime)
-    let day = startTime ? startTime.getUTCHours() : null;
-    console.log(startTime.valueOf().toLocaleString("en-US"))
-    eventDiv.innerHTML += `
-    <div class="card">
-        <h3>${item.name}</h3>
-        <h5>Start Date: ${item.dates.start.localDate}</h5>        
-        ${endDate}
-        <h5>Start Time: ${item.dates.start.localTime}</h5>        
-      
-    </div>
-`
-});
+        events.forEach(item => {
+            console.log("item:", item)
+            let endObj = item.dates.end ? item.dates.end : ''
+            let startObj = item.dates.start ? item.dates.start : ''
+          let endDate, startDate, startTime, endTime, convertedStartTime, convertedEndTime, startTimeDisplay, endTimeDisplay = ''
+            if (startObj) {
+             startDate = item.dates.start.localDate ? item.dates.start.localDate : ''
+             startTime = item.dates.start.localTime ? item.dates.start.localTime : ''
+             convertedStartTime = startTime ? timeConversion(startTime) : ''
+             startTimeDisplay = startTime ? `<h5>Start Time: ${convertedStartTime}</h5>` : "";
+            }
+            if (endObj) {
+              endDate = endObj ? `<h5>End Date: ${item.dates.end.localDate}</h5>` : "";
+             endTime = item.dates.end.localTime ? item.dates.end.localTime : ''
+             convertedEndTime = endTime ? timeConversion(endTime) : ''
+             endTimeDisplay = endTime ? `<h5>End Time: ${convertedEndTime}</h5>` : "";
+            }
+            let itemImage = item.images[0] ? item.images[0].url : ''
+            let itemURL = item.url ? item.url : ''
+        
+            eventDiv.innerHTML += `
+            <div class="card" style="padding: 0 4%;">
+                <h3>${item.name}</h3>
+                <h5>Start Date: ${startDate}</h5>        
+                ${endDate ? endDate : ""}
+                <div style="display:flex;">
+                ${startTimeDisplay}      
+                ${endTimeDisplay}  
+                </div>
+                <img src="${itemImage}" alt="${item.name}" height="150" width="100%" style="object-fit: cover;">
+                <a href=${item.url} target="_blank" style="background-color:gold;padding:8px;border-radius:12px;color:#fff;text-decoration:none;margin:1rem 0;">Buy Tickets</a>
+            </div>
+        `
+        });
     }
   
   })
