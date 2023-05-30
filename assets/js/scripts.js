@@ -1,4 +1,5 @@
 let store;
+<<<<<<< HEAD
 let historyElement = document.querySelector('#history');
 
 const apiKey = '23d68278b5b786d3d93337f17d67f78a';
@@ -14,6 +15,38 @@ const forecast = document.querySelector('#forecast');
 // };
 
 // getHistory();
+=======
+let history = document.querySelector('#history');
+const weatherApiKey = "acacc251ac1d55c10b6b1ca615625847";
+const ticketmasterApiKey = "X4xZbqdMjNE0sYFaaNPjrEKwBGjGkd96";
+
+// const axios = require('axios');
+
+
+// Example usage
+const apiKey = 'X4xZbqdMjNE0sYFaaNPjrEKwBGjGkd96';
+let keyword = 'music';
+let city = 'New York';
+
+
+
+// const getEvents = () => {
+//    let eventUrl = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${ticketmasterApiKey}`
+//    console.log("eventUrl:", eventUrl)
+// };
+
+// getEvents();
+ 
+const getHistory = () => {
+    store = localStorage.history ? JSON.parse(localStorage.history) : [];
+
+    store.forEach(city => {
+        history.innerHTML += `<button onclick="searchHistory('${city}')">${city}</button>`;
+    });
+};
+
+getHistory();
+>>>>>>> c33669d7e1d95595529603346ec64bc56322e4f0
 
 const searchHistory = city => {
     document.querySelector('input').value = city;
@@ -23,6 +56,7 @@ const searchHistory = city => {
 const searchCity = async () => {
     let city = document.querySelector('input').value;
 
+<<<<<<< HEAD
     if (!city) return;
 
     let url1 = `https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&units=imperial&q=${city}`;
@@ -48,11 +82,91 @@ const searchCity = async () => {
 
     forecast.innerHTML = '';
     for (let i = 0; i < list.length; i = i + 8) {
+=======
+    if(!city) return;
+
+
+    function searchEvents(apiKey, keyword, city) {
+        const baseURL = 'https://app.ticketmaster.com/discovery/v2/events.json';
+        const params = {
+          apikey: ticketmasterApiKey,
+          keyword: keyword,
+          city: city
+        };
+      
+        return axios
+          .get(baseURL, { params })
+          .then(response => {
+            return response.data._embedded.events;
+          })
+          .catch(error => {
+            console.log("error:", error);
+            return null;
+          });
+      }
+
+    searchEvents(apiKey, keyword, city)
+  .then(events => {
+    console.log(events);
+    let eventDiv = document.getElementById("events")
+    if (events) {
+        
+events.forEach(item => {
+    console.log("item:", item)
+    let endDate = item.dates.end ? `<h5>End Date: ${item.dates.end.localDate}</h5>` : "";
+    let startTime = new Date(item.dates.start.localTime)
+    let day = startTime ? startTime.getUTCHours() : null;
+    console.log(startTime.valueOf().toLocaleString("en-US"))
+    eventDiv.innerHTML += `
+    <div class="card">
+        <h3>${item.name}</h3>
+        <h5>Start Date: ${item.dates.start.localDate}</h5>        
+        ${endDate}
+        <h5>Start Time: ${item.dates.start.localTime}</h5>        
+      
+    </div>
+`
+});
+    }
+  
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+
+    let url1 = `https://api.openweathermap.org/data/2.5/weather?appid=${weatherApiKey}&units=imperial&q=${city}`;
+    let url2 = `https://api.openweathermap.org/data/2.5/forecast?appid=${weatherApiKey}&units=imperial&q=${city}`;
+
+    if(!store.includes(city)) {
+        store.push(city);
+        localStorage.history = JSON.stringify(store);
+        history.innerHTML += `<button onclick="searchHistory('${city}')">${city}</button>`;
+    };
+
+    let {name,dt,main:{temp,humidity},wind:{speed},weather:[{icon}]} = await (await fetch(url1)).json();
+
+    current.innerHTML = `
+        <h1>${name} (${new Date(dt*1000).toLocaleDateString()}) <img src="https://openweathermap.org/img/w/${icon}.png" alt="${icon}"></h1>
+        <h3>Temperature: ${temp}°F</h3>
+        <h3>Humidity: ${humidity}%</h3>
+        <h3>Wind Speed: ${speed} MPH</h3>
+    `;
+
+    let {list} = await (await fetch(url2)).json();
+
+    forecast.innerHTML = '';
+    for (let i = 0; i < list.length; i=i+8) {
+>>>>>>> c33669d7e1d95595529603346ec64bc56322e4f0
         let { dt, main: { temp, humidity }, weather: [{ icon }] } = list[i];
 
         forecast.innerHTML += `
             <div class="card">
+<<<<<<< HEAD
                 <h3>${new Date(dt * 1000).toLocaleDateString()}</h3>
+=======
+                <h3>${new Date(dt*1000).toLocaleDateString()}</h3>
+>>>>>>> c33669d7e1d95595529603346ec64bc56322e4f0
                 <img src="https://openweathermap.org/img/w/${icon}.png" alt="${icon}">
                 <h5>Temp: ${temp}°F</h5>
                 <h5>Humidity: ${humidity}%</h5>
@@ -60,6 +174,7 @@ const searchCity = async () => {
             </div>
         `;
     }
+<<<<<<< HEAD
 };
 
 function getCurrentTime() {
@@ -142,3 +257,9 @@ updateTime();
 
 // Update the time every second
 setInterval(updateTime, 1000);
+=======
+    // console.log(list);
+
+
+};
+>>>>>>> c33669d7e1d95595529603346ec64bc56322e4f0

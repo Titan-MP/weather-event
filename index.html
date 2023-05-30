@@ -10,43 +10,24 @@
 </head>
 
 <body>
-    <nav class="navbar has-background-primary has-text-white">WeatherEvent</nav>
-    <div id="gradient" class="is-fixed-top"></div>
-    <main class="column">
-            <form>
-                <div class="field has-addons">
-                    <div class="control is-expanded has-icons-left">
-                        <input class="input is-rounded is-primary is-large" type="text"
-                            placeholder="Search for an Event by ZIP Code">
-                    </div>
-                    <div class="control">
-                        <button class="button is-primary is-rounded is-large" type="submit" onclick="searchCity()">
-                            <span class="icon">
-                                <img src="assets/images/42-search.svg" alt="Search ZIP Code">
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </form>
-            <div class="box">
-                <p class="title is-3">Weather (5-Day Forecast)</p>
-                <div id="current-movies">
-                </div>
-                <!-- Placeholder for events -->
-            </div>
-            <div id="current" class="box">
-                <h1 class="title is-3">Upcoming Events</h1>
-                <h2 id="current-time"></h2>
-            </div>
-            <div class="box">
-                <h1 class="title is-3">Recently Searched Events</h1>
-                <h2 id="current-time"></h2>
-            </div>
-            <div class="mt-4">
-                <div id="forecast" class="columns is-multiline"></div>
-            </div>
-    </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <nav>Weather Dashboard</nav>
+    <div id="container">
+      <aside>
+        <h3>Search for a City:</h3>
+        <input type="text" placeholder="Tampa" />
+        <button onclick="searchCity()">Search</button>
+        <hr />
+        <div id="history"></div>
+      </aside>
+      <main>
+        <div id="current"></div>
+        <div>
+          <h5>5-Day Forecast</h5>
+          <div id="forecast"></div>
+        </div>
+      </main>
+    </div>
+    <script src="./assets/js/config.js"></script>
     <script src="./assets/js/scripts.js"></script>
 </body>
 

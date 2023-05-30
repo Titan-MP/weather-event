@@ -1,9 +1,20 @@
 body {
+<<<<<<< HEAD
     padding: 0;
     margin: 0;
 }
 
 nav {
+=======
+    background-color: #76cbe0;
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.5s ease-in-out;
+}
+
+nav {
+    background: linear-gradient(35deg, teal 50%, rgb(37, 121, 181) 90%);
+>>>>>>> c33669d7e1d95595529603346ec64bc56322e4f0
     color: white;
     padding: 5px;
     text-align: center;
@@ -18,6 +29,23 @@ nav {
     width: 90%;
 }
 
+<<<<<<< HEAD
+=======
+aside {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+aside button {
+    background: rgb(13, 133, 245);
+    color: white;
+    margin: 10px 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+>>>>>>> c33669d7e1d95595529603346ec64bc56322e4f0
 hr {
     background: silver;
     width: 100%;
@@ -41,25 +69,48 @@ main {
     width: 75%;
 }
 
+<<<<<<< HEAD
 .box {
     border: 2px solid rgb(34, 115, 161);
     padding: 10px;
+=======
+#current {
+    border: 2px solid rgb(34, 115, 161);
+    padding: 10px;
+}
+
+#current h3,
+h5 {
+>>>>>>> c33669d7e1d95595529603346ec64bc56322e4f0
     margin: 10px;
 }
 
 #forecast {
     display: flex;
+<<<<<<< HEAD
+=======
+    flex-wrap: wrap;
+    justify-content: space-around;
+>>>>>>> c33669d7e1d95595529603346ec64bc56322e4f0
 }
 
 .card {
     background: rgba(31, 143, 174, 0.458);
     color: white;
     width: 18%;
+<<<<<<< HEAD
     margin: 5px;
+=======
+    margin: 8px;
+>>>>>>> c33669d7e1d95595529603346ec64bc56322e4f0
     padding: 5px;
     border-radius: 8px;
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<<< HEAD:style.css
+>>>>>>> c33669d7e1d95595529603346ec64bc56322e4f0
 #gradient {
     position: fixed;
     top: 0;
@@ -67,4 +118,34 @@ main {
     width: 100%;
     height: 100%;
     z-index: -1;
+<<<<<<< HEAD
+=======
+    animation: colorChange 5s infinite;
+}
+
+@keyframes colorChange {
+    0% {
+        background-color: #ff0000; /* Red */
+    }
+    20% {
+        background-color: #00ff00; /* Green */
+    }
+    40% {
+        background-color: #0000ff; /* Blue */
+    }
+    60% {
+        background-color: #ffff00; /* Yellow */
+    }
+    80% {
+        background-color: #ff00ff; /* Magenta */
+    }
+    100% {
+        background-color: #00ffff; /* Cyan */
+    }
+========
+#events {
+    display: flex;
+    flex-wrap: wrap;
+>>>>>>>> c33669d7e1d95595529603346ec64bc56322e4f0:assets/css/style.css
+>>>>>>> c33669d7e1d95595529603346ec64bc56322e4f0
 }
