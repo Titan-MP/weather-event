@@ -74,6 +74,7 @@ const searchCity = async () => {
     let eventDiv = document.getElementById("events")
     if (events) {
         
+      eventDiv.innerHTML = '';
         events.forEach(item => {
             console.log("item:", item)
             let endObj = item.dates.end ? item.dates.end : ''
