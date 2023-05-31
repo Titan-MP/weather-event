@@ -14,7 +14,7 @@ nav {
     margin: 10px auto;
     width: 90%;
 }
-
+    
 aside {
     display: flex;
     flex-direction: column;
@@ -62,13 +62,4 @@ main {
 
 #forecast {
     display: flex;
-}
-
-.card {
-    background: black;
-    color: white;
-    width: 18%;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 8px;
 }
