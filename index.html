@@ -4,28 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./style.css">
     <title>How to get Wet</title>
 </head>
 <body>
-    <nav>Weather Dashboard</nav>
+    <nav class="has-text-weight-bold is-size-3 has-text-centered">Weather Dashboard</nav>
     <div id="container">
       <aside>
         <h3>Search for a City:</h3>
-        <input type="text" placeholder="Tampa" />
-        <button onclick="searchCity()">Search</button>
+        <input type="text" placeholder="Enter City" />
+        <button class="button is-primary" onclick="searchCity()">Search</button>
         <hr />
         <div id="history"></div>
       </aside>
       <main>
         <div id="current"></div>
         <div>
-          <h5>5-Day Forecast</h5>
+          <h5 class="is-size-3">5-Day Forecast</h5>
           <div id="forecast"></div>
+        </div>
+        <div>
+          <h5 class="is-size-3">Events</h5>
+          <div id="events"></div>
         </div>
       </main>
     </div>
-    <script src="./assets/js/config.js"></script>
-    <script src="./assets/js/scripts.js"></script>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./scripts.js"></script>
 </body>
 </html>
