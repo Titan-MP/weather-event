@@ -93,7 +93,11 @@ const searchCity = async () => {
 
       <section class="section">
        <div class="container">
+<<<<<<< HEAD
         <div class="columns mt-5 is-8 is-variable is-centered">
+=======
+        <div class="columns mt-5 is-8 is-variable">
+>>>>>>> 8f327cc46d3f68e92e702ce4f0741ace60da1376
          
         <div class="column is-4-tablet is-10-desktop">
           <div class="card">
@@ -106,9 +110,15 @@ const searchCity = async () => {
               <p>Start Date: ${startDate} ${endDate ? endDate : ""}</p>
             </div>
 
+<<<<<<< HEAD
             <footer class="card-footer has-background-warning">
             <p class="card-footer-item">
             <a href="${item.url}" class="card-footer-item has-text-black">Buy Tickets</a>
+=======
+            <footer class="card-footer">
+            <p class="card-footer-item">
+            <a href="${item.url}" class="card-footer-item">Buy Tickets</a>
+>>>>>>> 8f327cc46d3f68e92e702ce4f0741ace60da1376
             </p>
             </footer>
           </div>
@@ -188,4 +198,8 @@ const searchCity = async () => {
     // console.log(list);
 
 
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 8f327cc46d3f68e92e702ce4f0741ace60da1376
