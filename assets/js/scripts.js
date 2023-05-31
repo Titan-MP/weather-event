@@ -39,7 +39,15 @@ const searchCity = async () => {
     let city = document.querySelector('input').value;
 
     if(!city) return;
-
+    
+    function timeConversion(time) {
+      const [hours, minutes] = time.split(':');
+      const period = hours < 12 ? 'AM' : 'PM';
+      const convertedHours = hours % 12 || 12;
+      const convertedTime = `${convertedHours}:${minutes} ${period}`;
+  
+      return convertedTime;
+    }
 
     function searchEvents(apiKey, keyword, city) {
         const baseURL = 'https://app.ticketmaster.com/discovery/v2/events.json';
