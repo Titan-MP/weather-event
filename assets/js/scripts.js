@@ -5,7 +5,7 @@ let  history  =  document.querySelector('#history');            /* Reference to 
 
 getHistory();                                                   /* Get history from local storage                       */
 
-async function searchCity(cityName) 
+async function searchCity(cityName = document.querySelector('input').value) 
 { 
                                                                 /* OpenWeather API Key                                  */
   const  weatherApiKey  =  "acacc251ac1d55c10b6b1ca615625847";
