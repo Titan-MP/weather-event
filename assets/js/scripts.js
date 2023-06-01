@@ -3,8 +3,18 @@ let  store;                                                     /* Stores local 
 let  history  =  document.querySelector('#history');            /* Reference to element containing search history       */
 
 
+                                                                /* =============== PAGE INITIALIZATION ================ */
 getHistory();                                                   /* Get history from local storage                       */
 
+
+                                                                /* ================= GLOBAL FUNCTIONS ================= */
+
+/**
+ * Search given city for events and present them in the 
+ * frontend.
+ * 
+ * @param {*} cityName name of city for event search
+ */
 async function searchCity(cityName = document.querySelector('input').value) 
 { 
                                                                 /* OpenWeather API Key                                  */
@@ -127,8 +137,6 @@ async function searchCity(cityName = document.querySelector('input').value)
   }
 };
 
-
-                                                                /* ================= GLOBAL FUNCTIONS ================= */
 
 /**
  * Gets search history from local storage.
