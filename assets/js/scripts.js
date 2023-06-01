@@ -21,7 +21,6 @@ async function searchCity(cityName)
 
   searchEvents(cityName)
     .then(events => {
-      console.log(events);
       let eventDiv = document.getElementById("events")
       if (events) {
 
