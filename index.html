@@ -4,27 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--added ccs framework bulma-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>How to get Wet</title>
 </head>
 <body>
-    <nav>Weather Dashboard</nav>
+  <!--Removed css styling in turn for bulma usage-->
+    <nav class="is-size-3 has-text-weight-bold has-text-centered">How to get Wet</nav>
     <div id="container">
       <aside>
-        <h3>Search for a City:</h3>
-        <input type="text" placeholder="Tampa" />
-        <button onclick="searchCity()">Search</button>
-        <hr />
+        <h3 class="has-text-centered">Search for a City:</h3>
+        <!--added bulma button-->
+        <div class="input-container">
+        <input class="input" type="text" placeholder="Enter City">
+        <button class="button is-primary is-centered" onclick="searchCity()">Search</button>
+        </div>
         <div id="history"></div>
       </aside>
       <main>
         <div id="current"></div>
         <div>
-          <h5>5-Day Forecast</h5>
+          <h5 class="is-size-3 has-text-weight-bold is-centered">5-Day Forecast</h5>
           <div id="forecast"></div>
         </div>
         <div>
-          <h5>Events</h5>
+          <h5 class="is-size-3 has-text-weight-bold is-centered">Events</h5>
           <div id="events"></div>
         </div>
       </main>

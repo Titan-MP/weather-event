@@ -24,7 +24,7 @@ const getHistory = () => {
     store = localStorage.history ? JSON.parse(localStorage.history) : [];
 
     store.forEach(city => {
-        history.innerHTML += `<button onclick="searchHistory('${city}')">${city}</button>`;
+        history.innerHTML += `<button class="button is-secondary" onclick="searchHistory('${city}')">${city}</button>`;
     });
 };
 
@@ -96,17 +96,32 @@ const searchCity = async () => {
             let itemURL = item.url ? item.url : ''
         
             eventDiv.innerHTML += `
-            <div class="card" style="padding: 0 4%;">
-                <h3>${item.name}</h3>
-                <h5>Start Date: ${startDate}</h5>        
-                ${endDate ? endDate : ""}
-                <div style="display:flex;">
-                ${startTimeDisplay}      
-                ${endTimeDisplay}  
-                </div>
-                <img src="${itemImage}" alt="${item.name}" height="150" width="100%" style="object-fit: cover;">
-                <a href=${item.url} target="_blank" style="background-color:gold;padding:8px;border-radius:12px;color:#fff;text-decoration:none;margin:1rem 0;">Buy Tickets</a>
+            <section class="section">
+            <div class="container">
+             <div class="columns mt-5 is-8 is-variable is-centered">
+              
+             <div class="column is-4-tablet is-10-desktop">
+               <div class="card">
+                 <div class="card-image has-text-centered px-6">
+                  <img src="${itemImage}" alt="${item.name}">
+                 </div>
+     
+                 <div class="card-content">
+                   <p class="title is-size-5 has-text-centered">${item.name}</p>
+                   <p>Start Date: ${startDate} ${endDate ? endDate : ""}</p>
+                 </div>
+     
+                 <footer class="card-footer has-background-warning">
+                 <p class="card-footer-item">
+                 <a href="${item.url}" class="card-footer-item has-text-black">Buy Tickets</a>
+                 </p>
+                 </footer>
+               </div>
+             </div>
+     
+             </div>
             </div>
+           </section>
         `
         });
     }
@@ -142,13 +157,28 @@ const searchCity = async () => {
         let { dt, main: { temp, humidity }, weather: [{ icon }] } = list[i];
 
         forecast.innerHTML += `
-            <div class="card">
-                <h3>${new Date(dt*1000).toLocaleDateString()}</h3>
-                <img src="https://openweathermap.org/img/w/${icon}.png" alt="${icon}">
-                <h5>Temp: ${temp}°F</h5>
-                <h5>Humidity: ${humidity}%</h5>
-                <h5>Wind Speed: ${speed} MPH</h5>        
-            </div>
+        <section class="section">
+        <div class="container">
+         <div class="columns is-variable is-centered is-5">
+          
+         <div class="column">
+           <div class="card">
+             <div class="card-image ">
+              <img src="https://openweathermap.org/img/w/${icon}.png" alt="${icon}">
+             </div>
+ 
+             <div class="card-content">
+               <p class="title is-size-6 has-text-centered">${new Date(dt*1000).toLocaleDateString()}</p>
+               <p>Temp: ${temp}°F</p>
+               <p>Humidity: ${humidity}%</p>
+               <p>Wind Speed: ${speed} MPH</p>
+             </div>
+           </div>
+         </div>
+ 
+         </div>
+        </div>
+       </section>
         `;
     }
     // console.log(list);

@@ -6,9 +6,6 @@ nav {
     background: linear-gradient(35deg, teal 50%, black 90%);
     color: white;
     padding: 5px;
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 900;
 }
 
 #container {
@@ -17,7 +14,7 @@ nav {
     margin: 10px auto;
     width: 90%;
 }
-
+    
 aside {
     display: flex;
     flex-direction: column;
@@ -65,18 +62,4 @@ main {
 
 #forecast {
     display: flex;
-}
-
-.card {
-    background: black;
-    color: white;
-    width: 18%;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 8px;
-}
-
-#events {
-    display: flex;
-    flex-wrap: wrap;
 }
