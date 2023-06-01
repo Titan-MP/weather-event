@@ -136,11 +136,12 @@ async function searchCity(cityName)
  * Gets search history from local storage.
  * 
  */
-function getHistory () 
+function getHistory() 
 {
-                                                                /*  */
+                                                                /* Get and parse search history from local storage      */
   store = localStorage.history ? JSON.parse(localStorage.history) : [];
 
+                                                                /* Create a button for each of the past searches        */
   store.forEach(city => {
     history.innerHTML += `<button class="button is-secondary" onclick="searchCity('${city}')">${city}</button>`;
   });
