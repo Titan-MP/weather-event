@@ -26,7 +26,6 @@ async function searchCity(cityName)
 
         eventDiv.innerHTML = '';
         events.forEach(item => {
-          console.log("item:", item)
           let endObj = item.dates.end ? item.dates.end : ''
           let startObj = item.dates.start ? item.dates.start : ''
           let endDate, startDate, startTime, endTime, convertedStartTime, convertedEndTime, startTimeDisplay, endTimeDisplay = ''
