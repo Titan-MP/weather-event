@@ -5,15 +5,8 @@ const  weatherApiKey       =  "acacc251ac1d55c10b6b1ca615625847"; /* OpenWeather
 const  ticketmasterApiKey  =  "X4xZbqdMjNE0sYFaaNPjrEKwBGjGkd96"; /* Ticketmaster API Key                                 */
 let    keyword             =  'music';                            /* Default event type                                   */
 
-const getHistory = () => {
-  store = localStorage.history ? JSON.parse(localStorage.history) : [];
 
-  store.forEach(city => {
-    history.innerHTML += `<button class="button is-secondary" onclick="searchHistory('${city}')">${city}</button>`;
-  });
-};
-
-getHistory();
+getHistory();                                                     /* Get history from local storage                       */
 
 const searchHistory = city => {
   document.querySelector('input').value = city;
@@ -30,15 +23,6 @@ const searchCity = async () => {
   let city = document.querySelector('input').value;             /* Save user input                                      */           
 
   if (!city) return;                                            /* Return if user did not provide input                 */
-
-  function timeConversion(time) {
-    const [hours, minutes] = time.split(':');
-    const period = hours < 12 ? 'AM' : 'PM';
-    const convertedHours = hours % 12 || 12;
-    const convertedTime = `${convertedHours}:${minutes} ${period}`;
-
-    return convertedTime;
-  }
 
   function searchEvents(apiKey, keyword, city) {
     const baseURL = 'https://app.ticketmaster.com/discovery/v2/events.json';
@@ -167,5 +151,36 @@ const searchCity = async () => {
           </div>
         </section>`;
   }
-  // console.log(list);
 };
+
+
+                                                                /* ================= GLOBAL FUNCTIONS ================= */
+
+/**
+ * Gets search history from local storage.
+ * 
+ */
+function getHistory () 
+{
+  store = localStorage.history ? JSON.parse(localStorage.history) : [];
+
+  store.forEach(city => {
+    history.innerHTML += `<button class="button is-secondary" onclick="searchHistory('${city}')">${city}</button>`;
+  });
+};
+
+
+/**
+ * Converts time to human-readable format.
+ * 
+ * @param {*} time time to convert
+ * @returns converted time
+ */
+function timeConversion(time) {
+  const [hours, minutes] = time.split(':');
+  const period = hours < 12 ? 'AM' : 'PM';
+  const convertedHours = hours % 12 || 12;
+  const convertedTime = `${convertedHours}:${minutes} ${period}`;
+
+  return convertedTime;
+}
