@@ -1,30 +1,30 @@
                                                                 /* ================= GLOBAL VARIABLES ================= */
-let    store;                                                      /* Stores local search history                          */
-let    history             =  document.querySelector('#history'); /* Reference to element containing search history       */
-const  weatherApiKey       =  "acacc251ac1d55c10b6b1ca615625847"; /* OpenWeather API Key                                  */
-const  ticketmasterApiKey  =  "X4xZbqdMjNE0sYFaaNPjrEKwBGjGkd96"; /* Ticketmaster API Key                                 */
-let    keyword             =  'music';                            /* Default event type                                   */
+let    store;                                                   /* Stores local search history                          */
+let    history  =  document.querySelector('#history');          /* Reference to element containing search history       */
+let    keyword  =  'music';                                     /* Default event type                                   */
 
 
-getHistory();                                                     /* Get history from local storage                       */
+getHistory();                                                   /* Get history from local storage                       */
 
-const searchHistory = city => {
-  document.querySelector('input').value = city;
-  searchCity();
-};
+async function searchCity(cityName) 
+{ 
+                                                                /* OpenWeather API Key                                  */
+  const  weatherApiKey       =  "acacc251ac1d55c10b6b1ca615625847";
 
-const searchCity = async () => {
-  const weatherApiKey = "acacc251ac1d55c10b6b1ca615625847";     /* OpenWeather API Key                                  */
+                                                                /* Ticketmaster API Key                                 */
+  const  ticketmasterApiKey  =  "X4xZbqdMjNE0sYFaaNPjrEKwBGjGkd96";
   
                                                                 /* API Request URLs                                     */
-  let url1 = `https://api.openweathermap.org/data/2.5/weather?appid=${weatherApiKey}&units=imperial&q=${city}`;
-  let url2 = `https://api.openweathermap.org/data/2.5/forecast?appid=${weatherApiKey}&units=imperial&q=${city}`;
+  let url1 = `https://api.openweathermap.org/data/2.5/weather?appid=${weatherApiKey}&units=imperial&q=${cityName}`;
+  let url2 = `https://api.openweathermap.org/data/2.5/forecast?appid=${weatherApiKey}&units=imperial&q=${cityName}`;
 
-  let city = document.querySelector('input').value;             /* Save user input                                      */           
+  if (!cityName)
+  {
+    return;                                                     /* Return if user did not provide input                 */
+  }
 
-  if (!city) return;                                            /* Return if user did not provide input                 */
-
-  function searchEvents(apiKey, keyword, city) {
+  function searchEvents(apiKey, keyword, city) 
+  {
     const baseURL = 'https://app.ticketmaster.com/discovery/v2/events.json';
     const params = {
       apikey: ticketmasterApiKey,
@@ -43,7 +43,7 @@ const searchCity = async () => {
       });
   }
 
-  searchEvents(ticketmasterApiKey, keyword, city)
+  searchEvents(ticketmasterApiKey, keyword, cityName)
     .then(events => {
       console.log(events);
       let eventDiv = document.getElementById("events")
@@ -106,10 +106,10 @@ const searchCity = async () => {
       console.log(error);
     });
 
-  if (!store.includes(city)) {
-    store.push(city);
+  if (!store.includes(cityName)) {
+    store.push(cityName);
     localStorage.history = JSON.stringify(store);
-    history.innerHTML += `<button onclick="searchHistory('${city}')">${city}</button>`;
+    history.innerHTML += `<button onclick="searchCity('${cityName}')">${cityName}</button>`;
   };
 
   let { name, dt, main: { temp, humidity }, wind: { speed }, weather: [{ icon }] } = await (await fetch(url1)).json();
@@ -165,10 +165,9 @@ function getHistory ()
   store = localStorage.history ? JSON.parse(localStorage.history) : [];
 
   store.forEach(city => {
-    history.innerHTML += `<button class="button is-secondary" onclick="searchHistory('${city}')">${city}</button>`;
+    history.innerHTML += `<button class="button is-secondary" onclick="searchCity('${city}')">${city}</button>`;
   });
 };
-
 
 /**
  * Converts time to human-readable format.
