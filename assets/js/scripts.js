@@ -1,7 +1,6 @@
                                                                 /* ================= GLOBAL VARIABLES ================= */
-let    store;                                                   /* Stores local search history                          */
-let    history  =  document.querySelector('#history');          /* Reference to element containing search history       */
-let    keyword  =  'music';                                     /* Default event type                                   */
+let  store;                                                     /* Stores local search history                          */
+let  history  =  document.querySelector('#history');            /* Reference to element containing search history       */
 
 
 getHistory();                                                   /* Get history from local storage                       */
@@ -9,41 +8,18 @@ getHistory();                                                   /* Get history f
 async function searchCity(cityName) 
 { 
                                                                 /* OpenWeather API Key                                  */
-  const  weatherApiKey       =  "acacc251ac1d55c10b6b1ca615625847";
-
-                                                                /* Ticketmaster API Key                                 */
-  const  ticketmasterApiKey  =  "X4xZbqdMjNE0sYFaaNPjrEKwBGjGkd96";
+  const  weatherApiKey  =  "acacc251ac1d55c10b6b1ca615625847";
   
                                                                 /* API Request URLs                                     */
-  let url1 = `https://api.openweathermap.org/data/2.5/weather?appid=${weatherApiKey}&units=imperial&q=${cityName}`;
-  let url2 = `https://api.openweathermap.org/data/2.5/forecast?appid=${weatherApiKey}&units=imperial&q=${cityName}`;
+  let  url1  =  `https://api.openweathermap.org/data/2.5/weather?appid=${weatherApiKey}&units=imperial&q=${cityName}`;
+  let  url2  =  `https://api.openweathermap.org/data/2.5/forecast?appid=${weatherApiKey}&units=imperial&q=${cityName}`;
 
   if (!cityName)
   {
     return;                                                     /* Return if user did not provide input                 */
   }
 
-  function searchEvents(apiKey, keyword, city) 
-  {
-    const baseURL = 'https://app.ticketmaster.com/discovery/v2/events.json';
-    const params = {
-      apikey: ticketmasterApiKey,
-      keyword: keyword,
-      city: city
-    };
-
-    return axios
-      .get(baseURL, { params })
-      .then(response => {
-        return response.data._embedded.events;
-      })
-      .catch(error => {
-        console.log("error:", error);
-        return null;
-      });
-  }
-
-  searchEvents(ticketmasterApiKey, keyword, cityName)
+  searchEvents(cityName)
     .then(events => {
       console.log(events);
       let eventDiv = document.getElementById("events")
@@ -162,6 +138,7 @@ async function searchCity(cityName)
  */
 function getHistory () 
 {
+                                                                /*  */
   store = localStorage.history ? JSON.parse(localStorage.history) : [];
 
   store.forEach(city => {
@@ -169,13 +146,54 @@ function getHistory ()
   });
 };
 
+
+/**
+ * Search for events based on given city.
+ * 
+ * @param {*} city city in which to search for events
+ * 
+ * @returns list of events returned from reponse or "null" 
+ * if error occurs
+ */
+function searchEvents(city) 
+{
+  let  keyword  =  'music';                                     /* Default event type                                   */
+
+                                                                /* Ticketmaster API Key                                 */
+  const  ticketmasterApiKey  =  "X4xZbqdMjNE0sYFaaNPjrEKwBGjGkd96";
+
+                                                                /* Ticketmaster API base URL                            */
+  const  baseURL  =  'https://app.ticketmaster.com/discovery/v2/events.json';
+
+                                                                /* Set the parameters for request                       */
+  const params = {
+    apikey: ticketmasterApiKey,
+    keyword: keyword,
+    city: city
+  };
+
+                                                                /* Request and return events from Ticketmaster API      */
+  return axios
+    .get(baseURL, { params })
+    .then(response => {
+      return response.data._embedded.events;
+    })
+    .catch(error => {
+      console.log("error:", error);
+      return null;
+    });
+}
+
+
 /**
  * Converts time to human-readable format.
  * 
  * @param {*} time time to convert
+ * 
  * @returns converted time
  */
-function timeConversion(time) {
+function timeConversion(time) 
+{
   const [hours, minutes] = time.split(':');
   const period = hours < 12 ? 'AM' : 'PM';
   const convertedHours = hours % 12 || 12;
