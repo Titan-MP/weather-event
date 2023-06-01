@@ -8,7 +8,7 @@
 
 This project includes a search capability by city or zipcode that will allow the user to view not only their five day forcast, but local major music events nearby.
 
-You can view the project <a href = " ">Here</a>
+You can view the project <a href = "https://titan-mp.github.io/weather-event/">Here</a>
 
 ##  Features :
 
