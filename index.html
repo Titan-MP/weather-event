@@ -4,36 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <!--added ccs framework bulma-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>How to get Wet</title>
 </head>
 <body>
-    <nav class="has-text-weight-bold is-size-3 has-text-centered">Weather Dashboard</nav>
+  <!--Removed css styling in turn for bulma usage-->
+    <nav class="is-size-3 has-text-weight-bold has-text-centered">How to get Wet</nav>
     <div id="container">
-      <aside class="">
-        <h3>Search for a City:</h3>
-        <input type="text" placeholder="Enter City" />
-        <button class="button is-primary" onclick="searchCity()">Search</button>
-        <hr />
+      <aside>
+        <h3 class="has-text-centered">Search for a City:</h3>
+        <!--added bulma button-->
+        <div class="input-container">
+        <input class="input" type="text" placeholder="Enter City">
+        <button class="button is-primary is-centered" onclick="searchCity()">Search</button>
+        </div>
         <div id="history"></div>
       </aside>
       <main>
         <div id="current"></div>
         <div>
-          <h5 class="is-size-3 has-text-centered">5-Day Forecast</h5>
+          <h5 class="is-size-3 has-text-weight-bold is-centered">5-Day Forecast</h5>
           <div id="forecast"></div>
         </div>
         <div>
-          <h5 class="is-size-3 has-text-centered">Events</h5>
+          <h5 class="is-size-3 has-text-weight-bold is-centered">Events</h5>
           <div id="events"></div>
         </div>
       </main>
     </div>
-    
+    <!-- <script src="./assets/js/config.js"></script> -->
     
     <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./assets/js/scripts.js"></script>
 </body>
-</html>  
+</html>
