@@ -55,3 +55,13 @@ THEN I am presented with the city name, date, weather conditions, temperature, h
 ![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODNjYWM5NWRhOWQ4MTNjMmQzN2M2NTY3NzViNmIyNmY5ZjRkMDQ0NSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/PWHQebSJQvmvNdEI8j/giphy.gif)
 
 # Refrences
+
+<a href = https://openweathermap.org/api>Open Weather API</a>
+
+<a href = https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/>Ticketmaster API</a>
+
+<a href = https://developer.mozilla.org/en-US/docs/Web/API/Response>Mozilla</a>
+
+<a href = https://www.w3schools.com/>W3Schools</a>
+
+<a href = https://stackoverflow.com>Stackoverflow</a>
