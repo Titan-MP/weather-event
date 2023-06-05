@@ -6,9 +6,10 @@
 
 ## Description
 
-This project includes a search capability by city or zipcode that will allow the user to view not only their five day forcast, but local major music events nearby.
+This project includes a search capability by city or zipcode that will allow the user to view not only their five day forecast, but local major music events nearby.
 
 You can view the project <a href = "https://titan-mp.github.io/weather-event/">Here</a>
+
 
 ##  Features :
 
@@ -46,7 +47,21 @@ THEN I am presented with the city name, date, weather conditions, temperature, h
 <br></br>
 
 # UI SneakPeak ❤️
+![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDBhNTA0OWY1OGZhZDE1NTM5ZjdiZjUxNTcwZTc3ZGRkMTViN2I3NCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/YxDou7ZTCz5dtQD5ah/giphy.gif)
+</figure>
 
-<br><br>
+<br></br>>
+
+![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODNjYWM5NWRhOWQ4MTNjMmQzN2M2NTY3NzViNmIyNmY5ZjRkMDQ0NSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/PWHQebSJQvmvNdEI8j/giphy.gif)
 
 # Refrences
+
+<a href = https://openweathermap.org/api>Open Weather API</a>
+
+<a href = https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/>Ticketmaster API</a>
+
+<a href = https://developer.mozilla.org/en-US/docs/Web/API/Response>Mozilla</a>
+
+<a href = https://www.w3schools.com/>W3Schools</a>
+
+<a href = https://stackoverflow.com>Stackoverflow</a>
