@@ -93,7 +93,7 @@ async function searchCity(cityName = document.querySelector('input').value)
   if (!store.includes(cityName)) {
     store.push(cityName);
     localStorage.history = JSON.stringify(store);
-    history.innerHTML += `<button onclick="searchCity('${cityName}')">${cityName}</button>`;
+    history.innerHTML += `<button class="button is-secondary" onclick="searchCity('${cityName}')">${cityName}</button>`;
   };
 
   let { name, dt, main: { temp, humidity }, wind: { speed }, weather: [{ icon }] } = await (await fetch(url1)).json();
